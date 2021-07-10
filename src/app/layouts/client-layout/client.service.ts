@@ -23,6 +23,10 @@ export class ClientService {
     return this._http.get(`${ this.url }/TablaServicio/`);                  
   }
 
+  getHabitations(){
+    return this._http.get(`${ this.url }/TablaHabitaciones/`);
+  }
+
 /*
   newMovie( movie: any ){
 

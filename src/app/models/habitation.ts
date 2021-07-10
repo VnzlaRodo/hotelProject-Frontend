@@ -1,13 +1,12 @@
 export class Habitation{
 	constructor(
-		public id: string,
-        public images: string[],
-		public type: string,
+		public id: string,        
+		public id_room_type: string,
 		public price: number,
         public status: string,
-        public num: number,
+        public number: number,
         public description?: string,
-        public register?: Date,
-        public id_admin?: string
+        public fecha_registro?: Date,
+        public id_Admin?: string
 	){}
 }

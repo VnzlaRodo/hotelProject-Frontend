@@ -9,7 +9,7 @@ export interface RouteInfo {
 }
 
 export const ROUTES: RouteInfo[] = [
-    { path: '/admin',         title: 'Administrador',     icon:'nc-single-02', class: '' },
+    //{ path: '/admin',         title: 'Administrador',     icon:'nc-single-02', class: '' },
     { path: '/admin/reservacion',   title: 'Reservaciones',     icon:'nc-book-bookmark', class: '' },
     { path: '/admin/habitacion',    title: 'Habitaciones',      icon: 'nc-key-25',    class: '' },
     { path: '/admin/servicios',     title: 'Servicios Extra',   icon: 'nc-bell-55',    class: '' },
