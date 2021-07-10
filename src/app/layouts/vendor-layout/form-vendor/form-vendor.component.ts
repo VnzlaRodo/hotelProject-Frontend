@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Vendor } from '../../../models/vendor';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-form-vendor',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormVendorComponent implements OnInit {
 
+  @Input() vendor: Vendor;
+  @Output() confirm = new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  noSubmit(){
+    this.confirm.emit(false);
+  }
+  onSubmit(form:NgForm){
+    console.log(form.value);
+  } 
 }

@@ -15,7 +15,7 @@ export class ReservationComponent implements OnInit {
   constructor( public _clientService: ClientService ) { 
 
     _clientService.getTypeHabitation()
-                      .subscribe( resp => {
+                      .subscribe( (resp:TypeHabitation[]) => {
                         this.habitations = resp;
                         console.log(resp);
                       });

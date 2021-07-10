@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from './client.service';
+import { Service } from '../../models/service';
 
 @Component({
   selector: 'app-client-layout',
@@ -8,14 +9,14 @@ import { ClientService } from './client.service';
 })
 export class ClientLayoutComponent implements OnInit {
 
-  items: any;
-  serviceSelect: any = [];
-
+  items: Service[];
+  serviceSelect: Service = {id:"",name:"",icono:"",imges:[],price:0,status:"",description:"",id_Admin:""};
+  
   
   constructor( private _clientServices: ClientService) { 
-
+    
     this._clientServices.getServices()
-              .subscribe( resp => {
+              .subscribe( (resp:Service[]) => {
                   this.items = resp;
                   console.log(this.items);
                   this.serviceSelect = resp[0];

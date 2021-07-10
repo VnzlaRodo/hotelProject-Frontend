@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Vendor } from '../../models/vendor';
 
 @Component({
   selector: 'app-vendor-layout',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class VendorLayoutComponent implements OnInit {
 
   confirm: boolean = false;
+  vendor: Vendor;
 
   constructor() { }
 
@@ -20,7 +22,8 @@ export class VendorLayoutComponent implements OnInit {
   }
 
   getCodigo( argumento: any ){
-    console.log("asd");
+    console.log(argumento);
+    this.vendor = argumento;
   }
 
 }

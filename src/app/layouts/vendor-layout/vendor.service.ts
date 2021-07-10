@@ -6,13 +6,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class VendorService {
 
-  private url = 'https://hotel-86b0a-default-rtdb.firebaseio.com';
+  private url = 'http://localhost/hotel/TablaProveedor';
 
   constructor( private _http: HttpClient) { }
 
 
   getVendor( id: string ){
-    return this._http.get(`${this.url}/proveedor/${id}.json`);
+    return this._http.get(`${this.url}/?id=${id}`);
   }
 
 }

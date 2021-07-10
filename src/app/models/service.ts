@@ -1,13 +1,13 @@
-export class Vendor{
+export class Service{
 	constructor(
 		public id: string,
 		public name: string,
-		public lastname: string,
+        public icono: string,
+        public imges: string[],
+		public price: number,
         public status: string,
-        public email: string,
-        public telf: string,
-        public direction: string,
+        public description: string,
         public id_Admin: string,
         public fecha_registro?: Date
-	){}
+		){}
 }
