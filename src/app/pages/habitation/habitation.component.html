@@ -24,12 +24,12 @@
                         <tbody>
                             <tr class="list" *ngFor="let item of items">
                                 <td>
-                                    {{ item.num }}
+                                    {{ item.number }}
                                 </td>
                                 <td>
-                                    {{ item.type }}
+                                    {{ item.id_room_type }}
                                 </td>
-                                <td [ngClass]="{'bg-success': item.status === 'limpia' , 'bg-danger': item.status === 'ocupada' , 'bg-info': item.status === 'mantenimiento' , 'bg-warning': item.status === 'desocupada' }">
+                                <td [ngClass]="{'bg-success': item.status === 'Libre' , 'bg-danger': item.status === 'Ocupada' , 'bg-info': item.status === 'Reservada' , 'bg-warning': item.status === 'Mantenimiento' }">
                                     {{ item.status }}
                                 </td>
                                 <td class="text-right">

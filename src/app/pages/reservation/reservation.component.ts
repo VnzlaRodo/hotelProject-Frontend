@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../../layouts/admin-layout/admin.service';
+import { Habitation } from '../../models/habitation';
+import { TypeHabitation } from '../../models/typehabitation';
+import { Reservation } from '../../models/reservation';
 
 @Component({
   selector: 'app-reservation',
@@ -7,11 +11,54 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReservationComponent implements OnInit {
 
-  items: any[] = Data;
+  items: Reservation[];
+  typeHabitations: TypeHabitation[];
+  habitations: Habitation[];
 
-  constructor() { }
+  constructor( private _adminService: AdminService) { 
+
+          this._adminService.getTypeHabitations()
+                  .subscribe(
+                    (resp:TypeHabitation[]) => {
+                      this.typeHabitations = resp;
+                    }
+                  );
+
+          this._adminService.getHabitations()
+                  .subscribe(
+                    (resp:Habitation[]) => {
+                      this.habitations = resp;
+                    }
+                  );
+
+          this._adminService.getReservations()
+                  .subscribe(
+                    (resp:Reservation[]) => {
+                      this.items = resp;
+                      this.filterHabitations();
+                      console.log(this.items);
+                    }
+                  );
+   }
 
   ngOnInit(): void {
+  }
+
+  filterHabitations( ){   
+
+    this.typeHabitations.forEach(elementType => {
+        
+      this.habitations.forEach((elementHab,index) => {
+
+        if (elementHab.id_room_type == elementType.id) this.habitations[index].id_room_type = elementType.name;
+
+        this.items.forEach((element,i) => {
+            if (element.id_room == this.habitations[index].id) this.items[i].id_room = elementType.name;
+        });
+
+      });
+    });
+    
   }
 
 }

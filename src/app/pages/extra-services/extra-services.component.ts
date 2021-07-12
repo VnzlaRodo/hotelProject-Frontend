@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../../layouts/admin-layout/admin.service';
+import { Service } from '../../models/service';
 
 @Component({
   selector: 'app-extra-services',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExtraServicesComponent implements OnInit {
 
-  items: any[] = Data;
+  items: Service[];
 
-  constructor() { }
+  constructor( private _adminService: AdminService) {
+
+    this._adminService.getServices().subscribe(
+                      (resp:Service[]) => {
+                        this.items = resp;
+
+                        this.items.forEach((element,index) => {
+                            if(element.name == 'piscina') this.items[index].icono = 'nc-support-17';
+                            else if (element.name == 'Masajes') this.items[index].icono = 'nc-tap-01';
+                            else if (element.name == 'tour') this.items[index].icono = 'nc-bus-front-12';
+                            else if (element.name == 'souvenir') this.items[index].icono = 'nc-cart-simple';
+
+                        });
+
+                        console.log(this.items);
+                      }
+    );
+   }
 
   ngOnInit(): void {
   }

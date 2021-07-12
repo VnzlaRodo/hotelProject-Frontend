@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Habitation } from 'app/models/habitation';
+import { AdminService } from '../../layouts/admin-layout/admin.service';
+import { TypeHabitation } from '../../models/typehabitation';
 
 @Component({
   selector: 'app-habitation',
@@ -7,11 +10,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HabitationComponent implements OnInit {
 
-  items: any[] = Data;
+  items: Habitation[];
+  typeHabitations: TypeHabitation[];
 
-  constructor() { }
+  constructor( private _adminService: AdminService) { 
+    
+    this._adminService.getTypeHabitations().subscribe(
+      (resp:TypeHabitation[]) => {
+        this.typeHabitations = resp;                
+      }
+      );
+
+      this._adminService.getHabitations().subscribe(
+                    (resp:Habitation[]) => {
+                      
+                      this.items = this.filterHabitations(resp);
+                      console.log(this.items);
+                    }
+      );
+   }
 
   ngOnInit(): void {
+  }
+
+  filterHabitations( habitations: Habitation[]){   
+
+    this.typeHabitations.forEach(elementType => {
+        
+      habitations.forEach((element,index) => {
+
+        if (element.id_room_type == elementType.id) habitations[index].id_room_type = elementType.name;
+
+      });
+    });
+
+    return habitations;
   }
 
 }

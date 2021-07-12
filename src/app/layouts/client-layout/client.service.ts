@@ -8,7 +8,8 @@ import { map } from 'rxjs/operators';
 })
 export class ClientService {
 
-  private url = 'http://localhost/hotel';
+  //private url = 'http://localhost/hotel';
+  private url = 'https://vnzlarodo2.000webhostapp.com/hotel';
   
   
   constructor( private _http: HttpClient ) { }

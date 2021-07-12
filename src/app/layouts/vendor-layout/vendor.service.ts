@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class VendorService {
 
-  private url = 'http://localhost/hotel/TablaProveedor';
+  //private url = 'http://localhost/hotel/TablaProveedor';
+  private url = 'https://vnzlarodo2.000webhostapp.com/hotel/TablaProveedor/';
 
   constructor( private _http: HttpClient) { }
 
